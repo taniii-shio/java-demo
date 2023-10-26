@@ -14,8 +14,8 @@ public class ArgTest {
     System.out.println("obj.val : " + obj.val);
   }
 
-  public static void funcB(int aa, MyClass obj) {
+  public static void funcB(int aa, MyClass obj2) {
     aa = 200;
-    obj.val = 200;
+    obj2.val = 200;
   }
 }
