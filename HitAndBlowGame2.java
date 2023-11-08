@@ -9,21 +9,31 @@ public class HitAndBlowGame2 {
         int guess = 0;
         boolean flag = false;
         while (!flag) {
+            System.out.println(secret);
             System.out.println("4桁の数字を入力してください");
             guess = sc.nextInt();
             hit = 0;
             blow = 0;
+
+            // シークレットの値を保持する変数をコピーして使用
+            int secretCopy = secret;
+
             for (int i = 0; i < 4; i++) {
-                if (guess % 10 == secret % 10) {
+                int guessDigit = guess % 10;
+                int secretDigit = secretCopy % 10;
+
+                if (guessDigit == secretDigit) {
                     hit++;
-                }
-                if (guess / 1000 == secret / 1000) {
+                } else if (String.valueOf(secret).contains(String.valueOf(guessDigit))) {
                     blow++;
                 }
+
                 guess /= 10;
-                secret /= 10;
+                secretCopy /= 10;
             }
-            System.out.println("ヒット" + hit + "ブロー" + blow);
+
+            System.out.println("ヒット" + hit + " ブロー" + blow);
+
             if (hit == 4) {
                 flag = true;
             }
